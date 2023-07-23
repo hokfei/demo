@@ -4,7 +4,7 @@ This project uses lombok, you will want to have lombok plugin installed in your 
 
 ## Entity Diagram: 
 I went with a many to one relationship between Account and Customer.
-![Alt text](/src/main/resource/entitydiagram.png "Entity Diagram")
+![Alt text](src/main/resource/entitydiagram.png "Entity Diagram")
 
 ## Security:
 As security precaution another microservice would be needed. Let's call it TokenMicroservice. This microservice would validate the credentials of a user and generate a jwt. The token would be signed with my own certificate (created with openssl) and this microservice would use the same certificate to validate the token when the user submits a request.
