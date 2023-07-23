@@ -11,13 +11,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "customer")
 @Getter
 @Setter
-@Table()
 public class Customer {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     

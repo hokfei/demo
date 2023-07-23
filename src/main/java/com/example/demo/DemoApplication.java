@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.example.demo"})
 public class DemoApplication {
 
     public static void main(String[] args) {

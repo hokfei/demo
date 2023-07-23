@@ -9,8 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class AccountModel {
-    private Long id;
+    private Long accountNumber;
     private String status;
     private Integer version;
     private BigDecimal balance;
+    private String type;
+    private Long customerId;
 }

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
     private CustomerService customerService;
     
-    @ApiOperation(value = "Get 1 customer", response = String.class,
+    @ApiOperation(value = "Get 1 customer", response = CustomerModel.class,
             tags = "")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Success|OK"),
             @ApiResponse(code = 404, message = "not found!!!")})
@@ -29,7 +29,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getOneCustomer(id));
     }
     
-    @ApiOperation(value = "Create 1 customer", response = String.class,
+    @ApiOperation(value = "Create 1 customer", response = CustomerModel.class,
             tags = "")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Success|OK"),
             @ApiResponse(code = 404, message = "not found!!!")})
