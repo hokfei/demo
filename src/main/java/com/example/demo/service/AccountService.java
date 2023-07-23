@@ -20,6 +20,9 @@ public class AccountService {
     private CustomerRepository customerRepository;
     
     public AccountModel createAccount(AccountModel accountModel) {
+        if (accountModel == null) {
+            throw new IllegalArgumentException();
+        }
         Optional<Customer> customer = customerRepository.findById(accountModel.getCustomerId());
         if (customer.isPresent()) {
             Account account = new Account();
@@ -50,7 +53,7 @@ public class AccountService {
                 throw new IllegalArgumentException("error.amount.blank");
             }
             Account a = account.get();
-            if (!"Active".equals(a.getStatus())) {
+            if ("Closed".equals(a.getStatus())) {
                 throw new IllegalArgumentException("error.account.closed");
             }
             a.setBalance(a.getBalance().add(amount));
@@ -71,7 +74,7 @@ public class AccountService {
             if (a.getBalance().compareTo(amount) < 0) {
                 throw new IllegalArgumentException("error.insufficient.balance");
             }
-            if (!"Active".equals(a.getStatus())) {
+            if ("Closed".equals(a.getStatus())) {
                 throw new IllegalArgumentException("error.account.closed");
             }
             a.setBalance(a.getBalance().subtract(amount));

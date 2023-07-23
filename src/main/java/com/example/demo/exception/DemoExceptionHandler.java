@@ -32,7 +32,7 @@ public class DemoExceptionHandler {
         return new ResponseEntity<>(res, new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
     
-    @ExceptionHandler(EntityNotFoundException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception) {
         DemoResponseModel res = new DemoResponseModel();
         res.setMessage(exception.getMessage() != null? exception.getMessage() : "error.500");

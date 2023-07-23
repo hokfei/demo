@@ -25,7 +25,7 @@ public class CustomerController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Success|OK"),
             @ApiResponse(code = 404, message = "not found!!!")})
     @GetMapping
-    public ResponseEntity<CustomerModel> testReturn(@RequestParam("id") Long id) {
+    public ResponseEntity<CustomerModel> getOneCustomer(@RequestParam("id") Long id) {
         return ResponseEntity.ok(customerService.getOneCustomer(id));
     }
     
