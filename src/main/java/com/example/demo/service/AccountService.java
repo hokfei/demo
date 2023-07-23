@@ -47,9 +47,12 @@ public class AccountService {
         Optional<Account> account = accountRepository.findByAccountNumber(accountNumber);
         if (account.isPresent()) {
             if (amount == null) {
-                throw new IllegalArgumentException("test1");
+                throw new IllegalArgumentException("error.amount.blank");
             }
             Account a = account.get();
+            if (!"Active".equals(a.getStatus())) {
+                throw new IllegalArgumentException("error.account.closed");
+            }
             a.setBalance(a.getBalance().add(amount));
             accountRepository.save(a);
             return accountMapper.toModel(a);
@@ -62,13 +65,15 @@ public class AccountService {
         Optional<Account> account = accountRepository.findByAccountNumber(accountNumber);
         if (account.isPresent()) {
             if (amount == null) {
-                throw new IllegalArgumentException("test1");
+                throw new IllegalArgumentException("error.amount.blank");
             }
             Account a = account.get();
             if (a.getBalance().compareTo(amount) < 0) {
-                throw new IllegalArgumentException("test2");
+                throw new IllegalArgumentException("error.insufficient.balance");
             }
-            
+            if (!"Active".equals(a.getStatus())) {
+                throw new IllegalArgumentException("error.account.closed");
+            }
             a.setBalance(a.getBalance().subtract(amount));
             accountRepository.save(a);
             return accountMapper.toModel(a);

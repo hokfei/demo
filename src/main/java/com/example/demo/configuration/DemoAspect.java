@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class DemoAspect {
     private static final Logger log = Logger.getLogger(DemoAspect.class);
 
-    // Pointcut to target all methods in your application
+    // Pointcut to target all methods in the application
     @Pointcut("execution(* com.example.demo..*.*(..))")
     public void allMethods() {
     }
